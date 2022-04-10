@@ -19,4 +19,6 @@ public class Konyv {
     public void setOldalszam(long oldalszam) {
         this.oldalszam = oldalszam;
     }
+
+    /** valtoztattam */
 }
