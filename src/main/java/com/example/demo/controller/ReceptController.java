@@ -15,6 +15,7 @@ import java.awt.*;
 @Controller
 public class ReceptController extends JFrame {
     private ReceptInnitView receptInnitView;
+    JMenuBar menuBar;
 
 //    @Autowired
 //    private ReceptRepository receptRepository;
@@ -27,7 +28,16 @@ public class ReceptController extends JFrame {
         this.setContentPane(receptInnitView.$$$getRootComponent$$$());
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        this.pack();
+        JMenu menu;
+        JMenuItem menuItem;
+        menuItem = new JMenuItem("példa");
+        menu = new JMenu("menü");
+        menuBar = new JMenuBar();
+        menuBar.add(menu);
+        this.setJMenuBar(menuBar);
+        menu.add(menuItem);
 
+        this.pack();
+        this.setSize(1000,500);
     }
 }

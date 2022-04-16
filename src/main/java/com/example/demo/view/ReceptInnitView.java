@@ -5,10 +5,13 @@ import com.example.demo.view.model.ReceptView;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 public class ReceptInnitView {
     private JButton mentesGomb;
@@ -17,8 +20,12 @@ public class ReceptInnitView {
     private JPanel címkePanel;
     private JPanel gombPanel;
     private JTextArea leirastextArea;
+    private JTextField nevtextArea;
+    private JButton keplfeltolto;
+    private JLabel megjelenito;
     private JTextField receptName;
     private ReceptServiceInterface receptServiceInterface;
+    private File file;
 
     public ReceptInnitView(ReceptServiceInterface receptServiceInterface) {
 this.receptServiceInterface = receptServiceInterface;
@@ -27,8 +34,26 @@ this.receptServiceInterface = receptServiceInterface;
             public void actionPerformed(ActionEvent e) {
                 ReceptView receptView = new ReceptView();
                 receptView.setLeiras(leirastextArea.getText());
+                receptView.setKep(file);
+                    receptView.setNev(nevtextArea.getText());
 
-                receptServiceInterface.save(receptView);
+                    receptServiceInterface.save(receptView);
+            }
+        });
+        keplfeltolto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser chooser = new JFileChooser();
+                chooser.showOpenDialog(null);
+                File f = chooser.getSelectedFile();
+                file = f;
+                ImageIcon imageIcon = null;
+                try {
+                    imageIcon = new ImageIcon(ImageIO.read(f));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                megjelenito.setIcon(imageIcon);
             }
         });
     }

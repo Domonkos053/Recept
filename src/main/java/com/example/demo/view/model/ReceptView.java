@@ -1,5 +1,6 @@
 package com.example.demo.view.model;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ public class ReceptView {
     private String nev;
     private String leiras;
     private List<HozzavaloView> hozzavaloViews;
+    private File kep;
 
     public long getAzonosito() {
         return azonosito;
@@ -48,5 +50,13 @@ public class ReceptView {
 
     public void setHozzavaloViews(List<HozzavaloView> hozzavaloViews) {
         this.hozzavaloViews = hozzavaloViews;
+    }
+
+    public File getKep() {
+        return kep;
+    }
+
+    public void setKep(File kep) {
+        this.kep = kep;
     }
 }

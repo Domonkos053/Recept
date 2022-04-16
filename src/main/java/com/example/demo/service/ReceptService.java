@@ -12,6 +12,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
 @Service
 @Qualifier("rendes")
 public class ReceptService implements ReceptServiceInterface {
@@ -29,8 +33,14 @@ public class ReceptService implements ReceptServiceInterface {
         Recept recept = new Recept();
         recept.setNev(receptView.getNev());
         recept.setLeiras(receptView.getLeiras());
+        try {
+            byte[] bytes = Files.readAllBytes(receptView.getKep().toPath());
+            recept.setKep(bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-      receptRepository.insert(recept );
+        receptRepository.insert(recept );
       for (HozzavaloView hozzavaloView: receptView.getHozzavaloViews()){
 
           Hozzavalo hozzavalo = new Hozzavalo();

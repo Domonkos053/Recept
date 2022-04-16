@@ -22,4 +22,15 @@ System.out.println(SuzukiSwift.kiir());
 		System.out.println(FordMondeo.kiir());
 	}
 
+	@Test
+	void testArrays(){
+		String[] nevek = new String[5];
+		nevek[3] = "alma";
+		nevek[4] = "körte";
+		nevek[0] = "barack";
+
+		for (int i=0; i<5; i++) {
+			System.out.println(i + ". eleme:" + nevek[i]);
+		}
+	}
 }

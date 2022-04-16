@@ -4,6 +4,7 @@ public class Recept {
     private long azonosito;
     private String nev;
     private String leiras;
+    private byte[] kep;
 
     public long getAzonosito() {
         return azonosito;
@@ -36,5 +37,13 @@ public class Recept {
 
     public void setLeiras(String leiras) {
         this.leiras = leiras;
+    }
+
+    public byte[] getKep() {
+        return kep;
+    }
+
+    public void setKep(byte[] kep) {
+        this.kep = kep;
     }
 }

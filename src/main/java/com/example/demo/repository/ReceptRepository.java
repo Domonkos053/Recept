@@ -17,8 +17,8 @@ public interface ReceptRepository {
     @Delete("Delete from recept WHERE azonosito=#{id}")
     public int deleteById(long id);
 
-    @Insert("Insert into recept(nev, leiras)" +
-            "values (#{nev},#{leiras})")
+    @Insert("Insert into recept(nev, leiras, kep)" +
+            "values (#{nev},#{leiras},#{kep})")
     @Options (useGeneratedKeys = true, keyProperty = "azonosito")
     public int insert (Recept recept);
     /*public int insert(String nev, String leiras);*/
